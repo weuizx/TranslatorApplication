@@ -1,0 +1,21 @@
+app:
+  authToken: ${IAM_TOKEN}
+  folderId: ${FOLDER_ID}
+  yandexTranslatorBaseUrl: https://translate.api.cloud.yandex.net/translate/v2/translate
+  numberOfParallelExecutors: 10
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5050/translator
+    username: weuizx
+    password: weuizx
+
+  liquibase:
+    enabled: false
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
