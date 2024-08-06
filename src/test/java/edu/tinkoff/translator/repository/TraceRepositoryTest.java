@@ -4,12 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class TraceRepositoryTest {
@@ -33,7 +31,7 @@ class TraceRepositoryTest {
     }
 
     @Test
-    @DisplayName("Добавление значени null в поле ipAddress вызывает DataIntegrityViolationException")
+    @DisplayName("Добавление значени null в поле ipAddress вызывает ошибку, запись не добавляется")
     @Transactional
     @Rollback
     void addTest2() {
@@ -44,12 +42,13 @@ class TraceRepositoryTest {
         String targetLang = "es";
 
 
-        assertThrows(DataIntegrityViolationException.class,
-                () -> traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang));
+        int result = traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang);
+
+        assertEquals(0, result);
     }
 
     @Test
-    @DisplayName("Добавление значени null в поле sourceText вызывает DataIntegrityViolationException")
+    @DisplayName("Добавление значени null в поле sourceText вызывает ошибку, запись не добавляется")
     @Transactional
     @Rollback
     void addTest3() {
@@ -59,12 +58,13 @@ class TraceRepositoryTest {
         String sourceLang = "en";
         String targetLang = "es";
 
-        assertThrows(DataIntegrityViolationException.class,
-                () -> traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang));
+        int result = traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang);
+
+        assertEquals(0, result);
     }
 
     @Test
-    @DisplayName("Добавление значени null в поле translatedText вызывает DataIntegrityViolationException")
+    @DisplayName("Добавление значени null в поле translatedText вызывает ошибку, запись не добавляется")
     @Transactional
     @Rollback
     void addTest4() {
@@ -74,12 +74,13 @@ class TraceRepositoryTest {
         String sourceLang = "en";
         String targetLang = "es";
 
-        assertThrows(DataIntegrityViolationException.class,
-                () -> traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang));
+        int result = traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang);
+
+        assertEquals(0, result);
     }
 
     @Test
-    @DisplayName("Добавление значени null в поле sourceLang вызывает DataIntegrityViolationException")
+    @DisplayName("Добавление значени null в поле sourceLang вызывает ошибку, запись не добавляется")
     @Transactional
     @Rollback
     void addTest5() {
@@ -89,12 +90,13 @@ class TraceRepositoryTest {
         String sourceLang = null;
         String targetLang = "es";
 
-        assertThrows(DataIntegrityViolationException.class,
-                () -> traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang));
+        int result = traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang);
+
+        assertEquals(0, result);
     }
 
     @Test
-    @DisplayName("Добавление значени null в поле targetLang вызывает DataIntegrityViolationException")
+    @DisplayName("Добавление значени null в поле targetLang вызывает ошибку, запись не добавляется")
     @Transactional
     @Rollback
     void addTest6() {
@@ -104,8 +106,9 @@ class TraceRepositoryTest {
         String sourceLang = "en";
         String targetLang = null;
 
-        assertThrows(DataIntegrityViolationException.class,
-                () -> traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang));
+        int result = traceRepository.add(ipAddress, sourceText, translatedText, sourceLang, targetLang);
+
+        assertEquals(0, result);
     }
 
 

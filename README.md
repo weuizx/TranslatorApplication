@@ -22,7 +22,7 @@
 
 ## Установка
 
-1. Склонируйте репозиторий на свой компьютер:
+1. Склонируйте репозиторий на свой компьютер и перейдите в папку с проектом:
 
    ```bash
    git clone https://github.com/weuizx/TranslatorApplication.git
@@ -69,6 +69,8 @@ mvn spring-boot:run
 
 По умолчанию приложение будет доступно по адресу: [http://localhost:8080](http://localhost:8080)
 
+#### Если у вас возникают проблемы с запуском приложения, попробуйте поменять порт postgresql в docker-compose.yml -> services.postgresql.ports и в application.yml ->spring.datasource.url
+
 ## Использование
 
 После запуска приложения, вы можете воспользоваться единственным эндпоинтом:
@@ -88,6 +90,9 @@ mvn test
 
 ИЛИ  
 с помощью созданной конфигурации запуска Intellij IDEA
+
+
+#### Для подключения к базе данных вы можете использовать DBeaver или Intellij IDEA Ultimate
 
 ## Контакты
 

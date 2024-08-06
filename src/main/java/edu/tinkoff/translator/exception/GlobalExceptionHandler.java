@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<TranslateWordsErrorResponse> handleValidationExceptions(MethodArgumentNotValidException e) {
+    public ResponseEntity<TranslateWordsErrorResponse> handleValidationException(MethodArgumentNotValidException e) {
         StringBuilder errors = new StringBuilder("Validation errors: ");
         e.getBindingResult().getFieldErrors().forEach(error ->
                 errors.append(error.getField()).append(": ").append(error.getDefaultMessage()).append("; ")

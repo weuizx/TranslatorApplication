@@ -68,29 +68,4 @@ public class TranslatorServiceImpl implements TranslatorService {
 
         return futures.stream().map(CompletableFuture::join).map(word -> word.translations().getFirst().text()).toList();
     }
-
-    //    public String translate(String ipAddress, String sourceLanguageCode, String targetLanguageCode, String text) {
-//        String canonicalText = InputTextFormatter.toCanonicalForm(text);
-//
-//        List<String> words = Arrays.stream(canonicalText.split(" ")).toList();
-//
-//        List<CompletableFuture<TranslateTextResponse>> futures = words.stream()
-//                .map(word -> CompletableFuture
-//                        .supplyAsync(() -> yandexTranslateClient.fetchTranslate(sourceLanguageCode, targetLanguageCode, word),
-//                    executorService)).toList();
-//
-//        List<String> translatedWords =
-//                futures.stream().map(CompletableFuture::join).map(word -> word.translations().getFirst().text()).toList();
-//
-//        String translatedText = String.join(" ", translatedWords);
-//        traceRepository.add(
-//                ipAddress,
-//                text,
-//                translatedText,
-//                sourceLanguageCode,
-//                targetLanguageCode
-//        );
-//
-//        return translatedText;
-//    }
 }

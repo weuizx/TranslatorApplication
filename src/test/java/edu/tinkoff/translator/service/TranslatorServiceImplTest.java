@@ -83,7 +83,7 @@ class TranslatorServiceImplTest {
         int initialNumberOfLines = traceRepository.selectCountAll();
 
         assertThrows(CompletionException.class,
-                () ->translatorService.translate(ipAddress, sourceLanguageCode, targetLanguageCode, text));
+                () -> translatorService.translate(ipAddress, sourceLanguageCode, targetLanguageCode, text));
 
         assertEquals(0, traceRepository.selectCountAll() - initialNumberOfLines);
 
@@ -102,7 +102,7 @@ class TranslatorServiceImplTest {
         int initialNumberOfLines = traceRepository.selectCountAll();
 
         assertThrows(CompletionException.class,
-                () ->translatorService.translate(ipAddress, sourceLanguageCode, targetLanguageCode, text));
+                () -> translatorService.translate(ipAddress, sourceLanguageCode, targetLanguageCode, text));
 
         assertEquals(0, traceRepository.selectCountAll() - initialNumberOfLines);
 
