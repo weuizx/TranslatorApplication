@@ -38,6 +38,12 @@
 
 4. Соберите проект с помощью Maven:
 
+   На MacOs/Linux (в новом терминале):
+    ```bash
+   export FOLDER_ID="<your_FOLDER_ID>"; export IAM_TOKEN="Bearer <your_IAM_TOKEN>"; mvn clean install
+   ```
+   На Windows:
+
    ```bash
    $env:FOLDER_ID="<your_FOLDER_ID>";$env:IAM_TOKEN="Bearer <your_IAM_TOKEN>"; mvn clean install
    ```
@@ -75,10 +81,20 @@ mvn spring-boot:run
 
 После запуска приложения, вы можете воспользоваться единственным эндпоинтом:
 
-- POST /translate - получить перевод
+- POST /translate - получить перевод  
 
-  Для проверки функциональности вы можете воспользоваться приложением Postman или
-  интерфейсом [SwaggerUI](http://localhost:8080/swagger-ui)(ссылка доступна после старта приложения)
+Для проверки функциональности вы можете воспользоваться приложением Postman или
+интерфейсом [SwaggerUI](http://localhost:8080/swagger-ui)(ссылка доступна после старта приложения)  
+
+Обязательные поля в теле запроса: sourceLanguageCode, targetLanguageCode, text  
+Пример запроса:  
+{   
+    "sourceLanguageCode": "en",  
+    "targetLanguageCode": "ru",  
+    "text": "snail"  
+}  
+Список доступных кодировок языка можно найти здесь https://yandex.cloud/ru/docs/translate/concepts/supported-languages  
+#### Для просмотра записей в базе данных вы можете использовать подключение через DBeaver или Intellij IDEA Ultimate  
 
 ## Тестирование
 
@@ -89,10 +105,7 @@ mvn test
 ```
 
 ИЛИ  
-с помощью созданной конфигурации запуска Intellij IDEA
-
-
-#### Для подключения к базе данных вы можете использовать DBeaver или Intellij IDEA Ultimate
+с помощью созданной конфигурации запуска Intellij IDEA  
 
 ## Контакты
 
